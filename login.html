@@ -205,10 +205,27 @@
         </div>
     </div>
 
-    <!-- Add Firebase SDK scripts before your own script -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <!-- Add Firebase modular SDK scripts (for v9+) before your script -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA13LOZxJXQcVq83Gufk7TbTHdkWxhRaak",
+            authDomain: "leaderboard-f8064.firebaseapp.com",
+            projectId: "leaderboard-f8064",
+            storageBucket: "leaderboard-f8064.appspot.com",
+            messagingSenderId: "889576004965",
+            appId: "1:889576004965:web:d0565a575950f03560d58c",
+            measurementId: "G-0KWHDEJ0R7"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app); // Get the Auth instance for later use
+    </script>
     <script>
         // DOM Elements
         const loginForm = document.getElementById('login-form');
@@ -223,19 +240,6 @@
         const storageStatus = document.getElementById('storage-status');
         const loginPasswordToggle = document.getElementById('login-password-toggle');
         const signupPasswordToggle = document.getElementById('signup-password-toggle');
-
-        // Initialize Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyA13LOZxJXQcVq83Gufk7TbTHdkWxhRaak",
-            authDomain: "leaderboard-f8064.firebaseapp.com",
-            databaseURL: "https://leaderboard-f8064-default-rtdb.firebaseio.com",
-            projectId: "leaderboard-f8064",
-            storageBucket: "leaderboard-f8064.firebasestorage.app",
-            messagingSenderId: "889576004965",
-            appId: "1:889576004965:web:d0565a575950f03560d58c",
-            measurementId: "G-0KWHDEJ0R7"
-        };
-        firebase.initializeApp(firebaseConfig);
 
         // Initialize user database in localStorage if it doesn't exist
         if (!localStorage.getItem('userDatabase')) {
