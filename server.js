@@ -50,7 +50,7 @@ app.post('/login', (req, res) => {
     res.json({ success: true });
 });
 
-// API endpoint for leaderboard data (GET and POST)
+// Leaderboard API
 const LEADERBOARD_FILE = path.join(__dirname, 'leaderboard.json');
 
 function readLeaderboard(username) {
@@ -64,17 +64,14 @@ function writeLeaderboard(username, data) {
     fs.writeFileSync(file, JSON.stringify(data, null, 2));
 }
 
-// Get leaderboard for a user
 app.get('/api/leaderboard', (req, res) => {
     const username = req.query.username;
     const data = readLeaderboard(username);
     res.json(data);
 });
 
-// Save leaderboard for a user
 app.post('/api/leaderboard', (req, res) => {
-    const username = req.body.username;
-    const leaderboard = req.body.leaderboard;
+    const { username, leaderboard } = req.body;
     if (!username || !leaderboard) return res.status(400).json({ error: 'Missing fields' });
     writeLeaderboard(username, leaderboard);
     res.json({ success: true });
