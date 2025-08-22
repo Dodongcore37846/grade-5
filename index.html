@@ -1591,17 +1591,17 @@
             if (student) {
                 // Add stars to the specific subject
                 student.stars[subject] += stars;
-                
+
                 // If it's not the overall tab, update the overall stars
                 if (subject !== 'overall') {
                     student.stars.overall += stars;
                 }
-                
+
                 // Re-render the leaderboard and cards
                 renderLeaderboard(currentSubject);
                 renderStudentCards();
-                
-                // Save the data
+
+                // Save the data for the current user/account
                 saveData();
             }
         }
