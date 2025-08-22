@@ -1758,5 +1758,13 @@
         // Initialize the application when the DOM is loaded
         document.addEventListener('DOMContentLoaded', init);
     </script>
+    <!-- Note: localStorage only works per browser and per device. 
+    It does NOT sync across devices via the internet automatically.
+    To allow accounts and data to sync across devices, you need a backend server or cloud database (like Firebase, Supabase, etc).
+    If you want login and data to work across devices, you must use a real backend, not just localStorage.
+
+    For now, localStorage only works on the same browser/device. 
+    To support cross-device login and data, you must implement a backend API and use AJAX/fetch to store and retrieve user data.
+    -->
 </body>
 </html>
